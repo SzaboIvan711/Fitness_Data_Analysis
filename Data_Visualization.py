@@ -12,7 +12,7 @@ out_dir.mkdir(parents=True, exist_ok=True)
 file_path = out_dir / "histograms.png"   # absolute path used when opening the file
 
 # load data (CSV relative to current working directory)
-df = pd.read_csv('data/clean_set.csv')
+df = pd.read_csv('data/set.csv')
 
 # Select numeric columns only
 numeric_cols = df.select_dtypes(include=np.number).columns

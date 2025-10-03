@@ -5,22 +5,21 @@ import pandas as pd                   # data loading/manipulation
 import matplotlib.pyplot as plt       # plotting (some steps may open figures)
 
 # Import step modules (each exposes a `run(df, out_dir, show=...)` function)
-import HRR_Gender, Age_Workout_Frequency_Gender, Age_Workout_Frequency_Workout_type, Age_HRR as Age_HRR, Avg_BMI_Level, Duration_Type_Calories, Fat_HRR
+import  Correlation_Stress, Correlation_Sleep, Correlation_Alcohol, Correlation_Smoking, Basic_PhysiologicalConnections
 
 # Registry of pipeline steps: keys are CLI names, values are callables to execute
 STEPS = {
-    "hrr_age_gender": HRR_Gender.run,
-    "Age_Workout_Frequency_Gender": Age_Workout_Frequency_Gender.run,
-    "Age_Workout_Frequency_Workout_type": Age_Workout_Frequency_Workout_type.run,
-    "Age_HRR": Age_HRR.run,
-    "Avg_BMI_Level": Avg_BMI_Level.run,
-    "Duration_Type_Calories": Duration_Type_Calories.run,
-    "Fat_HRR": Fat_HRR.run
+    "Correlation_Stress": Correlation_Stress.run,
+    "Correlation_Sleep": Correlation_Sleep.run,
+    "Correlation_Alcohol": Correlation_Alcohol.run,
+    "Correlation_Smoking": Correlation_Smoking.run,
+    "Basic_PhysiologicalConnections": Basic_PhysiologicalConnections.run
+
 }
 
 def main():
     p = argparse.ArgumentParser()  # build CLI parser
-    p.add_argument("--data", default="data/clean_set.csv")  # path to the input CSV dataset
+    p.add_argument("--data", default="data/set.csv")  # path to the input CSV dataset
     p.add_argument("--out",  default="out")   # base output folder; steps themselves write to out/img and out/tab
     p.add_argument("--steps", default="all")  # "all" or a comma-separated list of step keys e.g. "hrr_age_gender,Avg_BMI_Level"
     p.add_argument("--show", action="store_true",

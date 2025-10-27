@@ -1,1 +1,0 @@
-Einführung DS Capol Placeholder
